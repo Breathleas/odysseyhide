@@ -1,0 +1,8 @@
+d2accdb152e8adc0f151c13bfb5bc42e  usr/bin/hexdump
+b27c6ce28489d155a0a19b73a7969e2a  usr/bin/renice
+d2ad51410a639c5bb8d2e69bd3b14b3f  usr/bin/getopt
+f6c2bc7ba7d604a7aa2ed1a0f73285eb  usr/bin/script
+6b48a2de4d4dce87aac7521b80b5ef02  usr/bin/time
+b01f4e0b22b2a12173fe7b13cfa905ca  usr/bin/killall
+f79962ebaab0dcbfeaadea8c991798d5  usr/bin/what
+d8fe134ec58b1f1c238a0c40f49eec6c  usr/bin/which
