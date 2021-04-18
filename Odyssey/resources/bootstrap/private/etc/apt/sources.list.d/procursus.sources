@@ -1,0 +1,5 @@
+Types: deb
+URIs: https://apt.procurs.us/
+Suites: iphoneos-arm64/1600
+Components: main
+

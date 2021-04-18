@@ -1,0 +1,6 @@
+095ce46618b37fa46d167db17fb94a05  usr/bin/grep
+ef55d1537377114cc24cdc398fbdd930  usr/bin/egrep
+3885488b9d1d10902c6b9c18e20bf952  usr/bin/fgrep
+24a09e403d0e8bf9afb20ea6332ca42f  usr/share/man/man1/fgrep.1.zst
+24a09e403d0e8bf9afb20ea6332ca42f  usr/share/man/man1/egrep.1.zst
+874a9e034ff05f16359a622f4895f4d3  usr/share/man/man1/grep.1.zst

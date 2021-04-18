@@ -1,0 +1,11 @@
+framework module SwiftZSTD {
+  umbrella header "SwiftZSTD.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftZSTD.Swift {
+    header "SwiftZSTD-Swift.h"
+    requires objc
+}

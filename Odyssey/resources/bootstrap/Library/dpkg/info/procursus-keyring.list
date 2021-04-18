@@ -1,0 +1,6 @@
+/.
+/etc
+/etc/apt
+/etc/apt/trusted.gpg.d
+/etc/apt/trusted.gpg.d/chariz.gpg
+/etc/apt/trusted.gpg.d/memo.gpg

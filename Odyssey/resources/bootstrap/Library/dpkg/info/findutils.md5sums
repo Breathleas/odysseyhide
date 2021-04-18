@@ -1,0 +1,10 @@
+6e208a64ebf5417d9b902a1f7f245e5a  usr/bin/locate
+909358f665f30b9d666ce095bcd384eb  usr/bin/updatedb
+44902820d08b39fccd85292edb7a5d23  usr/bin/xargs
+f0411a22bff39cb6cba5c4c3f62ec75a  usr/bin/find
+0a2cd50353166fe4fff0894784bc74c2  usr/libexec/frcode
+4ba9bf49b955ed70a157da521466d8e8  usr/share/man/man5/locatedb.5.zst
+e1125adf66091ad172205a8c974d4f0d  usr/share/man/man1/find.1.zst
+8c376a5efe4d9c32a7bb39c65865bd71  usr/share/man/man1/xargs.1.zst
+7adcdc01a9e2feb45f043f041b993b2a  usr/share/man/man1/updatedb.1.zst
+0695a94dc086604cf82739e1b26ff0ff  usr/share/man/man1/locate.1.zst

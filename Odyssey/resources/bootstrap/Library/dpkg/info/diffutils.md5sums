@@ -1,0 +1,8 @@
+6c4cbfb22a79fec61fa0896c26b2ad63  usr/bin/cmp
+7b573a3ca5b2cd588add6e0dadee0642  usr/bin/diff3
+2aa6f1bb71b69b4fd2806735fc9afd84  usr/bin/diff
+ad95e05e17a27506509d9d8a88d97aeb  usr/bin/sdiff
+73411c20b4f497b2608f1f79e633e695  usr/share/man/man1/sdiff.1.zst
+ed9b3f5300d77f7ecfd5751ee4482ed5  usr/share/man/man1/cmp.1.zst
+a504c2c1c77f7fe8b7baf8a57869ac6b  usr/share/man/man1/diff3.1.zst
+74a52df9f9e9bcec9ee4bb9cd7b7550d  usr/share/man/man1/diff.1.zst

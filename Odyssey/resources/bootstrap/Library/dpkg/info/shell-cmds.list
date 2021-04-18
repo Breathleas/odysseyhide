@@ -1,0 +1,11 @@
+/.
+/usr
+/usr/bin
+/usr/bin/getopt
+/usr/bin/hexdump
+/usr/bin/killall
+/usr/bin/renice
+/usr/bin/script
+/usr/bin/time
+/usr/bin/what
+/usr/bin/which
