@@ -1,0 +1,607 @@
+<html>
+<head>
+	<title>跨屏控制</title>
+    <style>
+        body{
+            margin: 0;
+            text-align: center;
+            font-family: verdana, 微软雅黑;
+            color:#3b3b3b;
+        }
+        body label{
+            font-family: verdana, 微软雅黑;
+            color:#3b3b3b;
+        }
+        .valign:before {
+            content:"";
+            display:inline-block;
+            vertical-align:middle;
+            height:100%;
+        }
+        .valign > * {
+            display:inline-block;
+            vertical-align:middle;
+        }
+        .screen {
+            width: 100%;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        .main{
+            position: relative;
+            width: 375px;
+        }
+        .btnOption{
+            width: 100%;
+            height: 80px;
+            background:#f2f2f2;
+        }
+        .btnOption button{
+            width: 33.33333%;
+            border: 0;
+            background: transparent;
+            float: left;
+            margin: 0;
+            cursor: pointer;
+            padding: 0;
+            outline: none;
+        }
+        .btnOption button *{
+            cursor: pointer;
+        }
+        .btnOption button img{
+            display: block;
+            margin-bottom: 1px;
+        }
+        .btnOption button span{
+            text-align: center;
+        }
+
+        .input_content{
+            display: none;
+            position: fixed;
+            width: 420px;
+            height: 240px;
+            background: white;
+            left: 330px;
+            top: 427px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 8px 0px;
+
+        }
+        .input_content_header{
+            text-align: left;
+            height: 40px;
+            line-height: 40px;
+            background: #00b4ff;
+            color: white;
+            user-select: none;
+        }
+        .input_content_header label{
+            color:white;
+            margin-left: 16px;
+        }
+        .input_content_body{
+            text-align: left;
+            width: calc(100% - 40px);
+        }
+
+        .input_content_body .tips{
+            color:#ff7626;
+            font-size: 14px;
+            margin-top: 32px;
+            margin-bottom: 21px;
+            display: inline-block;
+            margin-left: 28px;
+        }
+
+        .input_content_body .tips span.tips_icon{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAFo9M/3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2NzNhYjY3OS00ZjJhLTg4NDktOTdmNS00MDUyMmM2ODc3MGMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODQ5MUFEMUEwRTQyMTFFOUEzOTBBRjk0Njk3NzdDQzUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODQ5MUFEMTkwRTQyMTFFOUEzOTBBRjk0Njk3NzdDQzUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjczYWI2NzktNGYyYS04ODQ5LTk3ZjUtNDA1MjJjNjg3NzBjIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY3M2FiNjc5LTRmMmEtODg0OS05N2Y1LTQwNTIyYzY4NzcwYyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuCRoDcAAAFfSURBVHjaYvxfpsYABD9YgMQfIGYBCCBGoIg1kHEUJHIEJAcQQCARK5AIiA3E/5mAxDEGJAAQQIxQUx4A8WYgzgWp+A/E8kCcAzKZiQEVMKMLtAEEEMyMs0BsxIAJWEHueQTEssgWQ+0Bgd8gI3eg6fqPzAEpSANiDiD+i6awGWQaQADB3AACC4E4DohvAXEQEF8FCYLcwAXEX5F0gnRcAeJdQOzOhCbJiMR2A2INJgb8YCEhBTJM+LwIBLNBCubgcAMINIAUpALxdDQTfkF9yAAQYMjhwA3Es4A4Co+b/gHxVCAuBkUDLKRBYBkQf8GimRHNWSD1uVAX9MICej4QRzKQDopA6RnkBVB6ZsahiBFH6MHAC5ALnkCTMDaQRsAV90EuACXkM1iigJALQC5XBwXKOSDmBOLDWBT9x6F5LTSJ32OBCvwEYjsoWxOIk4DYBYiloAY8gqbeOdAsDAcAY2xNtbatgHIAAAAASUVORK5CYII=);
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            margin-bottom: -2px;
+        }
+        .input_content_body .textarea{
+            resize: none;
+            width: 100%;
+            height: 48px;
+            font-size: 14px;
+            color: #9d9d9d;
+            border: 1px solid #d3d3d3;
+            border-radius: 8px;
+            outline: none;
+            text-indent: 14px;
+            margin-left: 20px;
+        }
+        .input_content_footer{
+            height: 50px;
+            position: absolute;
+            bottom: 13px;
+            width: calc(100% - 20px);
+            text-align: right;
+        }
+        .input_content_footer button{
+            height: 36px;
+            width: 80px;
+            background: #f2f2f2;
+            border: 1px solid #d3d3d3;
+            border-radius: 4px;
+            color: #3b3b3b;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+        }
+        .input_content_footer button:active{
+            background: white;
+        }
+        .input_content_footer button:first-child{
+            margin-right: 20px;
+        }
+        /*按钮图标*/
+        .btnOption i.icon{
+            display: block;
+            width: 36px;
+            height: 36px;
+        }
+        #btnHome i.icon{
+            background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAAGWB6gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YmMwYzliYS1jNDNiLTllNGEtODUwOC01YTBlNDMxM2IyZjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDlENkVFQTUwQjU2MTFFOTkzRkRCMUM1NDQ1MDlEMTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDlENkVFQTQwQjU2MTFFOTkzRkRCMUM1NDQ1MDlEMTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTI0MmY5NWMtMWFmOS03YjQ5LTg5NTUtMTZmZTg0Mzc5NGQ3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZiYzBjOWJhLWM0M2ItOWU0YS04NTA4LTVhMGU0MzEzYjJmOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pn5EuiwAAANYSURBVHjaYvz//z8DOmABEenp6SDqJxC/BmIZJiQFbEAsCMT/WaACIDMYYTQjNjMBAghDkAVqAUyUkQmJAwKmLMiGgmgMMwACCCwANQcGLgNxEBDfhgkgOxyk3Q/KZgXi9zA7WdCcuxFKX0UWZGLABIxQDAcAAYTV9xi60tLS0MX+I5s0c+ZMFOusoApy0AIJ7vCPQMyHHmBAHAbEq1mgnEdAnI9kAkq0gaxTAmI5IJ6Py20gRffxeR9XOBFOENgAQAARpYgYgJykscn9QvNHFxCXoytEjxQYWA4Nod9AvB8pUMSAuAwqB8I82AJJAklBBBBzQ7ETkvgrIF4ANXQhEH+Gih9CNug5EDdDFV0B4q9QjA4SoJrjgVgHiJmB2AY5KTEiRTqx4ApUHxO2zIQtz6CnLqyAiYFKgGrpCCCAqGYQ1byGL2WDgCoQ34LGkC4uRbhSNgx0Qg1hgKaZf/hiGZdBT6DZAQRykfIcKNtYE2MQDzStSEP5oPw1BYjZgXgvVOwIND/iNCgEmn9A4APUBSJQg0F1hwsQ+0PlQfnxEzaDQBlvNZS9CFoZgsrMa0hhBDJwDzQzgwAvVEwCOYvYQmkzID4NzbBcWIICJJ4Ide1DaCH9HFZqw/IQC1ThfxyGwMB8qFfloSUGSkXChK3mwwN0kKqH+dRK2fcHZzEy+AwafOURQIBRzUVULSAJFJKEACg3zYKyQQ23b+QYAipkKQ3qAGhTD5TNo6H4K1QskF5xLw7E+6AZbj203YkOQGLroGr2QfVQ3UF50FrkBRA7otU0lkgNMUuoGAw4QvX8graHKXKQBrSwBPl0IrRfASuO2qHpTxaIL0ELyPlQtixUrg2p6ALpnQDlX4WaTZSDQAb1Qivm60CshSR3AdoKAOmpAuJYpMZhAhTD+CC5aqhaVaheGNCCmv0PahcLLgc9g1bqRUiFNKgfmQnlG0J9ehnq0/k46isuqBysamaH6mWEmvUTqSIogtr5HJuDJJHYu6D1PQe06oZZcA1alxELdKBtKpgHFkHNFIHawYDUvsdwEKjf6QN1uTsQ+6JFCaUAOUp9oXYwQu18j81BQkC8Fa2JwEWDwpgLrXO5FWo3desgqlcd5NSDBOT/06OkpjkYddCQaw8NuhACANQk52W1ELiBAAAAAElFTkSuQmCC);
+        }
+        #btnHome i.icon:hover{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAAGWB6gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YmMwYzliYS1jNDNiLTllNGEtODUwOC01YTBlNDMxM2IyZjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0M3ODdFQTkwRTQyMTFFOTk2OTdGMUY0Mzg4OTM1MTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0M3ODdFQTgwRTQyMTFFOTk2OTdGMUY0Mzg4OTM1MTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N2Q3NTkzYjktNzNmYi1jNDRlLWIyMzUtMjMwMmRhNGVmMTI1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZiYzBjOWJhLWM0M2ItOWU0YS04NTA4LTVhMGU0MzEzYjJmOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqCczbIAAANxSURBVHjaYvz//z8DOmCBMRi3MPwEUq+BWIYJSQEbEAsC8X8WqCqQGYwgARDNiM1MgADCEETWCmYyIXFAwBSsBdlwDDMAAghTYAvDZSAVBMS3sfkGpNofymUF4vdALIDiZjRHoBjOhE0QiuEAIICw+h5nCKO5DW7Sfx9Uh1sBqaNAnAMLZJgcE1TBR5ACoC6QxBSk2AgFWwc1/hEQ5yP5ECXaQCYpAbEcEM9Hcx7cSiagFfeRHInhfbibCAGiwgkggIhSRAxgwWnDFrDcLzR/dAFxObpaUKQwYTFgOTRIfwPxfqQ0IQbEZdDQA2EebOlfAkg9RxLnhtJfoZpgYAEQJ0Lpz1Cxw0BsB3MRyJBmaJRcgRrwFYuPE6AGxwOxDhAzA7ENRmDjyQc4gxJnGKEFIiNSGDHiU8vEQCVAtXQEEEBUM4hqXmPB69wtDKpA6hY0SejiiRTcLgIa0gk1hAGaZv7hs5gJhyFPoNkBBHKR8hwo21gTDGygATxISZ8Bmr9eQ9l7gNgZyl4BxJFYvQY0JATJkA/QxCgCzRKgusMFqYqIAOJPGF4DGnIISK2Gii0CGiIIFAOVmdeQwug/1FWwDM0LFZNAjjVbKG0GNOQ00BBQhuXCEhRfobkf5NqH0EL6OXKd9B9q6FdoxuXCkyrmQ70qDyoxcAU2OblfEVQ7UCNl3yeYRQakGBl8Bg2+8gggwKjmIroUkET5aAs4N82CctOA+Bs55oBKIopCCOiQACC1EIj50KQ+QSv29TR3ENAR4kBqORA7EqllP7Q8fkmsg5iIdEgeEINqkRdojgHVNJZIJYMlVAwGHKF6QHrzKcodQAdoAPFVaIE5EdqvgJXI7aD0B/SVLJC+BC1550PZstC02YbU0APpnQDlXwViDaJyGbQNC6qkC7GUhRdA3QCgI+5A1YLSyVQsVQQoUWdDW5ggoAKt5AywdAb6oe3jPxhpCGjBMyAliaYJ1I8sACqeAVWjCaRWQWtKYsAVaHV8FcrPgIYUO5q6F0A7JNGjDNkxu0D1PVARB6jqBlXb0Ki7RoJjYFX8FWhogKJ0ERBzQNsSu5DUSWBLQ6B+pw+oCgNidyDbF1r1f4VmY0pBAlL73xeI3aHJwgdqN/5sT0btT3JRRna2HxJVB7R1AgpJnEoGtJYedA2ZYeugQdceGnQhBACRQSLaqczbgwAAAABJRU5ErkJggg==)
+        }
+        #btnMultitask i.icon{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAAGWB6gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YmMwYzliYS1jNDNiLTllNGEtODUwOC01YTBlNDMxM2IyZjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDlENkVFQTkwQjU2MTFFOTkzRkRCMUM1NDQ1MDlEMTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDlENkVFQTgwQjU2MTFFOTkzRkRCMUM1NDQ1MDlEMTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTI0MmY5NWMtMWFmOS03YjQ5LTg5NTUtMTZmZTg0Mzc5NGQ3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZiYzBjOWJhLWM0M2ItOWU0YS04NTA4LTVhMGU0MzEzYjJmOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoWvqkwAAADrSURBVHjaYvz//z8DOmABEenp6XCZmTNnMjIxYAFYBRmxmQkQQBiCLEALQPR/ZLP+4zUcwwyAAMJqE0HfoAOcviPKt+gAIICIchNxJqWlpSHz/+Ny+H+qWEdnRUSFE0AAEaWIGABLBNjkiLIBFNbIfvuPpJEsJzIxUAkMY4NYYMkAOUmQYxDV0hFAAFHNoEEa2NTMIgxYsgpZXvs/mkVGDRrWBRsjuQYNvvIIIMCo5qJBF2nD1kGw1Iir9Ce7RiAWwGoODAehWcSIR2w0DY06aNRBow4addCAVB30KolJcRDW5gm9HTTaHiIEAMAGS5kSC/piAAAAAElFTkSuQmCC);
+        }
+        #btnMultitask i.icon:hover{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAAGWB6gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YmMwYzliYS1jNDNiLTllNGEtODUwOC01YTBlNDMxM2IyZjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0M3ODdFQUQwRTQyMTFFOTk2OTdGMUY0Mzg4OTM1MTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0M3ODdFQUMwRTQyMTFFOTk2OTdGMUY0Mzg4OTM1MTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N2Q3NTkzYjktNzNmYi1jNDRlLWIyMzUtMjMwMmRhNGVmMTI1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZiYzBjOWJhLWM0M2ItOWU0YS04NTA4LTVhMGU0MzEzYjJmOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnNOdD0AAADqSURBVHjaYvz//z8DOmABEYxbGOAy/30YGJkYsACsgozYzAQIIAxBFqAFYLORzfqP13AMMwACCKtNBH2DDnD6jijfogOAACLKTUSZBAshuDtxOfw/VayjsyKiwgkggIhSRFRYQhMB1vgnxgBQWCP77T+SRrKcyMRAJTCMDWKBJQPkJEGOQVRLRwABRDWDBmlgUzOLMGDJKmR57f9oFhk1aFgXbIzkGjT4yiOAAKOaiwZdpA1bB7HA424L0XqoGsewmgPDQWgWMeIRG01Dow4addCog0YdNCBVB71KYlIchLV5Qm8HjbaHCAEAYR1FH0kUmh0AAAAASUVORK5CYII=);
+        }
+        #btnInput i.icon{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAAGWB6gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YmMwYzliYS1jNDNiLTllNGEtODUwOC01YTBlNDMxM2IyZjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEE1Q0VBQjgwQjU2MTFFOTkzRkRCMUM1NDQ1MDlEMTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEE1Q0VBQjcwQjU2MTFFOTkzRkRCMUM1NDQ1MDlEMTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTI0MmY5NWMtMWFmOS03YjQ5LTg5NTUtMTZmZTg0Mzc5NGQ3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZiYzBjOWJhLWM0M2ItOWU0YS04NTA4LTVhMGU0MzEzYjJmOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PloEPOIAAAKRSURBVHjaYvz//z8DOmABEenp6SAKJMsIFwQCfSgN1sYE5VyA0gYg1YzYzAQIIAxBFjQL6lmQJFEMhxuBYQZAAGG1CZ9v4GbDfAXlNzChWX4NqgDZ+EaYog1QWhtNE9hEgAAiyk1MDEQAbA4HBfBFXCatR4sNrCEZAMQ66AqQIxgGriL5lhHduv9otD8uN2lDdTMSTBDYAEAAEaWIGMDEQCUADyWkiAEBViD+hcR/DcRiaHrBKQ2UkPC5CGbINSgtCsT5QOwANQAWHg1Qdj0LFkNeosUASHE9EE8AYja0tM+AnsNhIB/NC/+xuJQRLTNhBDYr1FYGpEzFiCVNvCIUa7/QvIQOGtDCizbpCCCABl+CHHwGsWDJHrCaA7loYsRnyMyZM3G6aBcanxWLmv/EeA09g67Goe4/PoOQE9s1tOLwP1qmxVm3MSBlExAIRQs3RyzqG7FlWlY0BdeQ+LuhXkbO/Y2wrMOEJywasJRJ6C5pwBVG/mh+B2EtHOHXgCvW9IlIdxOISdm70BIgMr5GIE2hGCSGxyWhhNIUExa/N2JRdw1HOA7i8gggwKjmokFXro06iF4ApVDDUpOgg34gLsAhNxGPHM7GGbE1ETbgT8DCfFx5GUej5j+07UZWlIFK6lVEqFuNVKrvR6u4/mNp+2E4jFgH7YK2QNGrj0Ys9dhuKBtU+R0gIcQaiHXQBGiPCr3IhRlyDUsLZgKSo3A1ZpE9xkisg/yxNVyBIAxHxUJKekJxCK4OH7Hp5gqR6Uka2g3C2VIgJVFjSzekAOT0xICrxUGsg7ClG3KAPr5WC7EOwpVuGrEkUHTcQGH5hOEgXOnmGqGgxtFkRU5PYuQ4CFe6CSUh1ENxpKddo+0hagAAND6qjpIFVQAAAAAASUVORK5CYII=);
+        }
+        #btnInput i.icon:hover{
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAAGWB6gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2YmMwYzliYS1jNDNiLTllNGEtODUwOC01YTBlNDMxM2IyZjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0QwNDk3QzEwRTQyMTFFOTk2OTdGMUY0Mzg4OTM1MTQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0QwNDk3QzAwRTQyMTFFOTk2OTdGMUY0Mzg4OTM1MTQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N2Q3NTkzYjktNzNmYi1jNDRlLWIyMzUtMjMwMmRhNGVmMTI1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZiYzBjOWJhLWM0M2ItOWU0YS04NTA4LTVhMGU0MzEzYjJmOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgGGX98AAALKSURBVHjaYvz//z8DOmACEYxbwBguywKl9aGS/+EqgeAClDb478PAyIjNTIAAwhBkAVkABCBRRiCuZ0GSRDEcIoLNYIAAwmoTOmCB+QbZbLBmH7hHGpjQLL8GddV/JPsbYYo2QGltuDuApoAcCGIDBBBRbmJiIAJgc7gBEF8EORybSevRYgMjmkAgAIh10BUgRzAMXIX5FuYzZJP+o9H+uHynDQ1IRoIJAhsACCCiFBEDmBioBFiQgg4ZsALxLyT+ayAWgyYc5KBuACUkFK+hGQTzLygFakHZBaBYB+L9WBzUgM2glzDboSHfAMpgUD4b0AW/kSMfFr/oCSAfyRBkl8HAL1i0IicQ9MAGhcsEJC8xomGYy18RirVfaIkKIxygtCjQsHyapSOAABp8CXLwGcSCJVXDao4LyGGJVLaS5KJdaHxWjFjagppYcRkkhsZfjTXKkQzDZhByYruGVhz+B2lGNgBbiQwDE5DYoWjh5ohFfSO2TMuKpuAaEn83yMvwegrikkYgvwGbi1ZjyVsww0TRXQIzBJ5FsNS3uEABUPNEQtGvT0S6m0BMyt6FlgCR8TWkWGIlZJAYHpeEEkpTTFjSTiMWdcix5z80yiOAAKOaiwZduTbqIHoBFrTylxDoh7aRsIGJ2OTQaxz0xhklIeSPxzGwPO9PpFkN0PqjHm8uwxNCoJL6CajRR8AiUINQGtpsBbUyHYh1ICzEiA2hXVgc04il9GOF1lcM0MrvAAkh1kBsCE1AK4JhRa42UhdIC1d6wpGGcNaLTESkm3ws4mE4KhZS0hPIIYzIjsHWdEBPN6twyF0hIhpWI6UnnCFCSqI+D+38UgJAHWeSzGDC09IwoEI5pw/05ARKHYQr3TRiaeGgY2xRkQ90FLHlE0aU4SpvruHotWED2HIdqHySAUbfK1JDaBeOwi+UhFDHppYVSz9ktD1EFgAA2C3rNANkHsQAAAAASUVORK5CYII=);
+        }
+        iframe{
+            display: none;
+            border:0;
+            background: transparent;
+            position: fixed;
+            left:-99999;
+        }
+    </style>
+    <script type="text/javascript">
+        function ts_screen(){
+            this.init();
+        }
+
+        /**
+         * 初始化
+         * @Author   张强
+         * @DateTime 2018-12-29T15:15:42+0800
+         */
+        ts_screen.prototype.init = function(){
+            var ip = location.hostname;
+            this.params = {
+                ip:ip,//设备ip
+                port:"50005",//截屏端口
+                ws_port:"51008",//ws控制端口
+                frame_number:8, //每秒获取屏幕帧数
+                screen_render:""//参数为：uninterrupted 不间断渲染屏幕 为空则 一张渲染完再渲染下一张
+            };
+            if(!ip){
+                alert("ip为空");
+                return;
+            }
+            this.params.imgScreen = document.querySelector("#imgScreen");
+            this.params.iframe = document.querySelector("#iframe");
+            //获取屏幕
+            this.request_img();
+            //绑定设备操作
+            this.screen_action();
+        }
+
+        /**
+         * 发送文字
+         * @param message 文字
+         * @param ip 设备ip
+         * @constructor
+         */
+        ts_screen.prototype.Send_Text = function (type, x, y,auth,ip,state,cb,text) {
+            var params = this.params;
+            var move_type = 1;
+            switch (type){
+                case "down":
+                    this.params.Mouse_Down = true;
+                    move_type = 1;
+                    break;
+                case "move":
+                    if(!this.params.Mouse_Down){
+                        move_type = 0;
+                    }else
+                        move_type = 2;
+                    break;
+                case "up":
+                    move_type = 3;
+                    this.params.Mouse_Down = false;
+                    break;
+                default:
+                    move_type = type;
+                    break;
+            }
+            var that = this;
+            if(move_type > 0){
+                x = x * 2;
+                y  = y * 2;
+                params.doSend({input:{type:move_type,x:x,y:y,state:state||0,text:text || ""}});
+            }
+        }
+
+        /**
+         *  输入文字加载
+         * @Author   张强
+         * @DateTime 2019-01-02T11:36:09+0800
+         */
+        ts_screen.prototype.init_input_content = function(){
+            var params = this.params;
+            var imgScreen = params.imgScreen;
+            var that = this;
+            //对屏幕操作
+            var Mouse_Option = this.Mouse_Option.bind(this);
+
+            
+            var input_content = document.querySelector(".input_content");
+            //鼠标拖动输入框
+            var input_content_header = input_content.querySelector(".input_content_header");
+            input_content_header.onmousedown = function(ev){
+                input_header_mouse("down",ev);
+            }
+            document.body.onmousemove = function(ev){
+                input_header_mouse("move",ev);
+            }
+            input_content_header.onmouseup = function(ev){
+                input_header_mouse("up",ev);
+            }
+
+            //鼠标移动
+            var input_header_params = {};
+            //鼠标拖动输入框事件
+            var input_header_mouse = function(type,ev){
+                switch(type){
+                    case "down":
+                        input_header_params.down = true;
+                        //记录输入框当前所在位置
+                        input_header_params.clientX = input_content.offsetLeft;
+                        input_header_params.clientY = input_content.offsetTop;
+                        //记录鼠标所在位置
+                        input_header_params.x = ev.x;
+                        input_header_params.y = ev.y;
+                    break;
+                    case "move":
+                        if(input_header_params.down){
+                            //计算移动到的位置 原始位置 - (鼠标按下的位置 - 鼠标当前的位置)
+                            input_content.style.left = input_header_params.clientX - (input_header_params.x - ev.x) + "px";
+                            input_content.style.top = input_header_params.clientY - (input_header_params.y - ev.y) + "px";
+                        }
+                    break;
+                    case "up":
+                        input_header_params.down = false;
+                    break;
+                }
+            }
+
+            var main = document.querySelector(".main");
+             //点击输入文字按钮显示文本框
+            var btnInput = document.querySelector("#btnInput");
+            btnInput.onclick = function(){
+                input_content.style.display = "block";
+                var x = main.offsetLeft + imgScreen.offsetWidth + 20;
+                var y = main.offsetTop + main.offsetHeight - input_content.offsetHeight;
+                input_content.style.left = x + "px";
+                input_content.style.top = y + "px";
+            }
+            //隐藏输入文本框
+            var close_input = input_content.querySelector("#close_input");
+            close_input.onclick = function(){
+                input_content.style.display = "none";
+            }
+            //点击发送文字到设备
+            var btnSend = input_content.querySelector("#btnSend");
+            var textarea = input_content.querySelector(".textarea");
+            btnSend.onclick = function(){
+                Mouse_Option(11,0,0,0,function(){},textarea.value);
+            }
+        }
+
+        /**
+         * 屏幕动作
+         * @Author   张强
+         * @DateTime 2018-12-29T12:40:03+0800
+         */
+        ts_screen.prototype.screen_action = function(){
+            var params = this.params;
+            var imgScreen = params.imgScreen;
+            var that = this;
+
+            //首页
+            var btnHome = document.querySelector("#btnHome");
+            btnHome.onclick = function(){
+                Mouse_Option(20,0,0,0);
+            }
+
+            //多任务
+            var btnMultitask = document.querySelector("#btnMultitask");
+            btnMultitask.onclick = function(){
+                Mouse_Option(21, 0, 0, 0);
+            }
+            //加载输入文字
+            this.init_input_content();
+
+            /**
+             * 屏幕加载出错
+             * @Author   张强
+             * @DateTime 2018-12-29T12:32:02+0800
+             */
+            imgScreen.onerror = function(ev){
+
+            }
+
+            /**
+             * 屏幕加载完成
+             * @Author   张强
+             * @DateTime 2018-12-29T12:32:27+0800
+             */
+            imgScreen.onload = function(){
+                if(!params.sourceSize ||
+                    (params.nowSize && params.nowSize.width != this.width) ||
+                    (params.nowSize && params.nowSize.height != this.height)){
+                    var img = document.createElement("img");
+                    img.src = this.src;
+                    img.onload = function(){
+                        params.sourceSize = {width:this.width,height:this.height};
+                    }
+                    params.nowSize = {width:this.width,height:this.height};
+                }
+                if(!params.websocket){
+                    that.websocket_connection();
+                }
+                if(params.screen_render !== "uninterrupted"){
+                    setTimeout(function(){
+                        that.request_img();
+                    },1000 / params.frame_number);
+                }
+            }
+
+
+            var mousedown = false;
+            //鼠标按下
+            imgScreen.onmousedown = function (ev) {
+                if(!params.websocket) return;
+                Mouse_Option("down",ev.offsetX,ev.offsetY);
+                mousedown = true;
+            }
+            //鼠标在屏幕拖动
+            imgScreen.onmousemove = function (ev) {
+                if(!params.websocket) return;
+                Mouse_Option("move",ev.offsetX,ev.offsetY);
+            }
+            //鼠标离开屏幕
+            imgScreen.onmouseout = function (ev) {
+                if(!params.websocket) return;
+                Mouse_Option("up",ev.offsetX,ev.offsetY);
+                mousedown = false;
+            }
+            //鼠标在屏幕抬起
+            imgScreen.onmouseup = function (ev) {
+                if(!params.websocket) return;
+                Mouse_Option("up",ev.offsetX,ev.offsetY);
+                mousedown = false;
+            }
+            //鼠标出现在body
+            document.body.onmouseout = function (ev) {
+                if(!params.websocket) return;
+                Mouse_Option("up",ev.offsetX,ev.offsetY);
+                mousedown = false;
+            }
+
+            //对屏幕操作
+            var Mouse_Option = this.Mouse_Option.bind(this);
+        }
+
+        /**
+         * 对屏幕操作
+         * @Author   张强
+         * @DateTime 2018-12-29T12:45:31+0800
+         */
+        ts_screen.prototype.Mouse_Option = function(type, x, y,state,cb,text){
+            var params = this.params;
+            var move_type = 1;
+            switch (type){
+                case "down"://鼠标按下
+                    params.Mouse_Down = true;
+                    move_type = 1;
+                    break;
+                case "move"://鼠标在屏幕移动
+                    if(!params.Mouse_Down){
+                        move_type = 0;
+                    }else
+                        move_type = 2;
+                    break;
+                case "up":
+                    move_type = 3;
+                    params.Mouse_Down = false;
+                    break;
+                default:
+                    move_type = type;
+                    break;
+            }
+            var that = this;
+            if(move_type > 0){
+                if(!params.sourceSize) return;
+                //通过获取到的原始屏幕大小计算出当前鼠标所在屏幕位置
+                var w_b = x / params.nowSize.width;
+                var h_b = y / params.nowSize.height;
+                var nowX = params.sourceSize.width * (w_b);
+                var nowY = params.sourceSize.height * (h_b);
+
+                if(typeof(type) == "number"){
+                    params.iframe.src = "http://" + params.ip + ":" + params.port + "/event?type="+move_type+"&state=" + (state||0) + 
+                        "&text=" + encodeURIComponent(text || "");
+                }else{
+                    //往设备发送拖动屏幕请求
+                    params.doSend({input:{type:move_type,x:nowX,y:nowY,state:state||0,text:text || ""}});
+                    if(cb){
+                        setTimeout(function () {
+                            cb();
+                        },100);
+                    }
+                }
+            }
+        }
+
+        /**
+         * 获取屏幕
+         * @Author   张强
+         * @DateTime 2018-12-29T12:31:32+0800
+         */
+        ts_screen.prototype.request_img = function(){
+            var params = this.params;
+            imgScreen.src = "http://"+params.ip+":"+params.port+"/snapshot1?ext=jpg&orient=0&compress=0.00001&scale=1&t-" + new Date().getTime();
+            if(params.screen_render === "uninterrupted"){
+                var that = this;
+                setTimeout(function(){
+                    that.request_img();
+                },1000 / params.frame_number);
+            }
+        }
+
+        ts_screen.prototype.heartCheck = function(ws){
+            return {
+                timeout: 1000 * 10,//60ms
+                timeoutObj: null,
+                serverTimeoutObj: null,
+                reset: function(){
+                    clearTimeout(this.timeoutObj);
+                    clearTimeout(this.serverTimeoutObj);
+                    this.start();
+                },
+                start: function(){
+                    var self = this;
+                    this.timeoutObj = setTimeout(function(){
+                        ws.send("12345");
+                        self.serverTimeoutObj = setTimeout(function(){
+                            ws.close();//如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
+                        }, self.timeout)
+                    }, this.timeout)
+                },
+            }
+        }
+
+        /**
+         * websocket连接
+         * @Author   张强
+         * @DateTime 2018-12-29T12:33:11+0800
+         */
+        ts_screen.prototype.websocket_connection = function(){
+            var params = this.params;
+            var wsUri = "ws://" + params.ip +":" + params.ws_port;
+            var that = this;
+            var WebSocket_start = function() {
+                var websocket = new WebSocket(wsUri);
+                var heartCheck = that.heartCheck(websocket);
+                websocket.onopen = function(evt) {
+                    onOpen(evt)
+                };
+                websocket.onclose = function(evt) {
+                    onClose(evt)
+                };
+                websocket.onmessage = function(evt) {
+                    onMessage(evt)
+                };
+                websocket.onerror = function(evt) {
+                    onError(evt)
+                };
+                params.websocket = websocket;
+            }
+
+            var onOpen = function(evt) {
+                writeToScreen("CONNECTED");
+            }
+
+            var onClose = function(evt) {
+                writeToScreen("DISCONNECTED");
+                setTimeout(function(){
+                    WebSocket_start();
+                },3000);
+            }
+
+            var onMessage = function(evt) {
+                writeToScreen('<span style="color: blue;">RESPONSE: '+ evt.data+'</span>');
+                websocket.close();
+            }
+
+            var onError = function(evt) {
+                writeToScreen('<span style="color: red;">ERROR:</span> '+ evt.data);
+            }
+
+            params.doSend = function(message) {
+                message = JSON.stringify(message);
+                writeToScreen("SENT: " + message);
+                if(params.websocket.readyState === 1){
+                    params.websocket.send(message);
+                }
+            }
+            var writeToScreen = function(message) {
+                //console.log(message)
+            }
+            WebSocket_start();
+        }
+
+        var load = function(){
+            new ts_screen();
+        }
+
+    </script>
+</head>
+<body class="valign" onload="load()">
+    <div class="main">
+    	<img draggable="false" id="imgScreen" src="" class="screen" />
+        <iframe id="iframe" src=""></iframe>
+        <div class="btnOption valign">
+            <button id="btnHome" class="valign">
+                <span>
+                    <i class="icon"></i>
+                    <label>首页</label>
+                </span>
+            </button>
+            <button id="btnMultitask" class="valign">
+                <span>
+                    <i class="icon"></i>
+                    <label>多任务</label>
+                </span>
+            </button>
+            <button id="btnInput" class="valign">
+                <span>
+                    <i class="icon"></i>
+                    <label>输入</label>
+                </span>
+            </button>
+        </div>
+        <div class="input_content">
+            <div class="input_content_header">
+                <label>发送文字</label>
+            </div>
+            <div class="input_content_body">
+                <label class="tips">
+                    <span class="tips_icon"></span>
+                    <span>请保证设备页面处于可输入状态</span>
+                </label>
+                <input type="text" class="textarea" />
+            </div>
+            <div class="input_content_footer valign">
+                <button id="btnSend">发送</button>
+                <button id="close_input">取消</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

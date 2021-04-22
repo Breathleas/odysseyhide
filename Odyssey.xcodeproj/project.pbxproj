@@ -68,8 +68,6 @@
 		933AA7C324E9D34F006182FC /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933AA7C224E9D34F006182FC /* AppVersionManager.swift */; };
 		933AA7C424E9D34F006182FC /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933AA7C224E9D34F006182FC /* AppVersionManager.swift */; };
 		AFC8718825CFF9DC00B8BB26 /* FreeTheSandbox.c in Sources */ = {isa = PBXBuildFile; fileRef = AFC8718725CFF9DC00B8BB26 /* FreeTheSandbox.c */; };
-		AFC8718B25D006D000B8BB26 /* SwiftZSTD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC6932D25ACF12500C3C466 /* SwiftZSTD.framework */; };
-		AFC8718C25D006D000B8BB26 /* SwiftZSTD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFC6932D25ACF12500C3C466 /* SwiftZSTD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AFD8FFF425DAC1260064431F /* chroot.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD8FFF325DAC1260064431F /* chroot.m */; };
 		AFDEB4C925D3415A004813BF /* basebinaries in Resources */ = {isa = PBXBuildFile; fileRef = AFDEB4C825D3415A004813BF /* basebinaries */; };
 		F10593C124B1D98C00343F46 /* TableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10593C024B1D98C00343F46 /* TableButton.swift */; };
@@ -124,14 +122,12 @@
 		F170603824CD53CD001596A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0993D24A456390043250A /* SceneDelegate.swift */; };
 		F170603924CD53CD001596A0 /* ObjcTryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FF240924AD3FC200ACAE23 /* ObjcTryCatch.m */; };
 		F170603A24CD53CD001596A0 /* LogStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF240024AC946C00ACAE23 /* LogStream.swift */; };
-		F170603D24CD53CD001596A0 /* SwiftZSTD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36613AA1246E2DCF0090D2E0 /* SwiftZSTD.framework */; };
 		F170603F24CD53CD001596A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C0993C24A456390043250A /* LaunchScreen.storyboard */; };
 		F170604024CD53CD001596A0 /* signcert.p12 in Resources */ = {isa = PBXBuildFile; fileRef = F13C1675243C0E3300194BF3 /* signcert.p12 */; };
 		F170604224CD53CD001596A0 /* bootstrap.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = F1F551D9246E585C001CE9FB /* bootstrap.tar.gz */; };
 		F170604324CD53CD001596A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C0993724A456390043250A /* Main.storyboard */; };
 		F170604424CD53CD001596A0 /* basebinaries.tar in Resources */ = {isa = PBXBuildFile; fileRef = F1BE3B88246DE89C005E0C00 /* basebinaries.tar */; };
 		F170604624CD53CD001596A0 /* tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = F1F551E7246E677D001CE9FB /* tar.gz */; };
-		F170604B24CD53CD001596A0 /* SwiftZSTD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36613AA1246E2DCF0090D2E0 /* SwiftZSTD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F170605724CD54D5001596A0 /* electra-dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170605624CD54D4001596A0 /* electra-dummy.swift */; };
 		F170605824CD551C001596A0 /* ImageProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D35AF824B331630005400A /* ImageProcess.swift */; };
 		F170605924CD560C001596A0 /* offsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12430E4240BC986006439CC /* offsets.swift */; };
@@ -163,58 +159,6 @@
 		F1FF240A24AD3FC200ACAE23 /* ObjcTryCatch.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FF240924AD3FC200ACAE23 /* ObjcTryCatch.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		36613A9E246E2DCF0090D2E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B60EDDA71E0A2C2400F2713B;
-			remoteInfo = SwiftZSTD_macOS;
-		};
-		36613AA0246E2DCF0090D2E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B60EDDB51E0A2CF100F2713B;
-			remoteInfo = SwiftZSTD_iOS;
-		};
-		36613AA2246E2DCF0090D2E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B6A3756823CEA74B006C8ED4;
-			remoteInfo = SwiftZSTDTests_macOS;
-		};
-		36613AA4246E2DCF0090D2E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B6A3758623CEACDD006C8ED4;
-			remoteInfo = SwiftZSTDTests_iOS;
-		};
-		36613AA6246E2DCF0090D2E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B6C02D4523D683C40001675F;
-			remoteInfo = iOSTestApp;
-		};
-		36613AA8246E2DCF0090D2E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B6C02D5B23D687520001675F;
-			remoteInfo = "iOSTestApp-Tests";
-		};
-		F170600A24CD53CD001596A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B60EDDB41E0A2CF100F2713B;
-			remoteInfo = SwiftZSTD_iOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		AFC8718D25D006D000B8BB26 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -222,7 +166,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AFC8718C25D006D000B8BB26 /* SwiftZSTD.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,7 +176,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F170604B24CD53CD001596A0 /* SwiftZSTD.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +194,6 @@
 		360512DD24B10E5700DFD3AF /* UICircularProgressRingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRingDelegate.swift; sourceTree = "<group>"; };
 		360512DE24B10E5700DFD3AF /* UICircularProgressRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularProgressRing.swift; sourceTree = "<group>"; };
 		360512DF24B10E5700DFD3AF /* UICircularRingValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircularRingValueFormatter.swift; sourceTree = "<group>"; };
-		36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftZSTD.xcodeproj; path = SwiftZSTD/SwiftZSTD.xcodeproj; sourceTree = "<group>"; };
 		36C0993524A4560D0043250A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36C0993724A456390043250A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		36C0993924A456390043250A /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -284,7 +225,6 @@
 		53E564132506A8F400C4591F /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		53E564392506F18500C4591F /* ColourViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourViewer.swift; sourceTree = "<group>"; };
 		933AA7C224E9D34F006182FC /* AppVersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionManager.swift; sourceTree = "<group>"; };
-		AFC6932D25ACF12500C3C466 /* SwiftZSTD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftZSTD.framework; sourceTree = "<group>"; };
 		AFC8718625CFF9DC00B8BB26 /* FreeTheSandbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeTheSandbox.h; sourceTree = "<group>"; };
 		AFC8718725CFF9DC00B8BB26 /* FreeTheSandbox.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = FreeTheSandbox.c; sourceTree = "<group>"; };
 		AFC8D46E25DAA4DF0015F4C5 /* patchfinder64odyssey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = patchfinder64odyssey.h; sourceTree = "<group>"; };
@@ -362,7 +302,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFC8718B25D006D000B8BB26 /* SwiftZSTD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +309,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F170603D24CD53CD001596A0 /* SwiftZSTD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,22 +333,8 @@
 		3653E04F246E2C5800821ADA /* Deps */ = {
 			isa = PBXGroup;
 			children = (
-				36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */,
 			);
 			path = Deps;
-			sourceTree = "<group>";
-		};
-		36613A96246E2DCF0090D2E0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				36613A9F246E2DCF0090D2E0 /* SwiftZSTD.framework */,
-				36613AA1246E2DCF0090D2E0 /* SwiftZSTD.framework */,
-				36613AA3246E2DCF0090D2E0 /* SwiftZSTDTests_macOS.xctest */,
-				36613AA5246E2DCF0090D2E0 /* SwiftZSTDTests_iOS.xctest */,
-				36613AA7246E2DCF0090D2E0 /* iOSTestApp.app */,
-				36613AA9246E2DCF0090D2E0 /* iOSTestApp-Tests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		53E564002506A8F400C4591F /* Alderis */ = {
@@ -441,7 +365,6 @@
 		6D30127FB6823AE81A8072E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AFC6932D25ACF12500C3C466 /* SwiftZSTD.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -676,7 +599,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F170600924CD53CD001596A0 /* PBXTargetDependency */,
 			);
 			name = OdysseyUI;
 			productName = Electra13;
@@ -710,12 +632,6 @@
 			mainGroup = F124307A240BB358006439CC;
 			productRefGroup = F1243084240BB358006439CC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 36613A96246E2DCF0090D2E0 /* Products */;
-					ProjectRef = 36613A95246E2DCF0090D2E0 /* SwiftZSTD.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F1243082240BB358006439CC /* Odyssey */,
@@ -723,51 +639,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		36613A9F246E2DCF0090D2E0 /* SwiftZSTD.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftZSTD.framework;
-			remoteRef = 36613A9E246E2DCF0090D2E0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		36613AA1246E2DCF0090D2E0 /* SwiftZSTD.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftZSTD.framework;
-			remoteRef = 36613AA0246E2DCF0090D2E0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		36613AA3246E2DCF0090D2E0 /* SwiftZSTDTests_macOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftZSTDTests_macOS.xctest;
-			remoteRef = 36613AA2246E2DCF0090D2E0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		36613AA5246E2DCF0090D2E0 /* SwiftZSTDTests_iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftZSTDTests_iOS.xctest;
-			remoteRef = 36613AA4246E2DCF0090D2E0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		36613AA7246E2DCF0090D2E0 /* iOSTestApp.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = iOSTestApp.app;
-			remoteRef = 36613AA6246E2DCF0090D2E0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		36613AA9246E2DCF0090D2E0 /* iOSTestApp-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "iOSTestApp-Tests.xctest";
-			remoteRef = 36613AA8246E2DCF0090D2E0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F1243081240BB358006439CC /* Resources */ = {
@@ -990,21 +861,16 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		F170600924CD53CD001596A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftZSTD_iOS;
-			targetProxy = F170600A24CD53CD001596A0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		F1243095240BB359006439CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F191A9BE2432EC17005E0F8F /* BuildConfigs.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv7;
+				ARCHS = (
+					arm64,
+					arm64e,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1049,7 +915,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1063,7 +929,10 @@
 			baseConfigurationReference = F191A9BE2432EC17005E0F8F /* BuildConfigs.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv7;
+				ARCHS = (
+					arm64,
+					arm64e,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1106,7 +975,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1120,7 +989,10 @@
 		F1243098240BB359006439CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					arm64,
+					arm64e,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1162,7 +1034,10 @@
 		F1243099240BB359006439CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					arm64,
+					arm64e,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";

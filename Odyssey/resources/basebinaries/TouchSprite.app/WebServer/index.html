@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>WiFi 传脚本</title>
+    <link href="css/docs.css"  rel="stylesheet"/>
+    <link href="css/cd.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base16-dark.css">
+    <link rel="stylesheet" href="css/cdshow.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8">
+        
+    <script src="scripts/jquery1.8.2.min.js" type="text/javascript"></script>
+    <script src="scripts/lang.js" type="text/javascript"></script>
+    
+    <script src="scripts/cd.js"></script>
+    <script src="scripts/cdshow.js"></script>
+    <script src="scripts/lua.js"></script>
+   
+    <script src="scripts/libs.min.js" type="text/javascript"></script>
+    <script src="scripts/ajaxfileupload.js" type="text/javascript"></script>
+    
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <div id="header">
+                <div class="hoeaderlog">
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div id="left" class="clearfix">
+                <div id="logo">
+                </div>
+                <div id="upload_hint" class="hint"></div>
+                <div id="upload_form">
+                    <div id="upload_button" />
+                    <div class="file_upload_warper">
+                        <input type="file" name="newfile" value="" id="newfile_0" class="file_upload" multiple />
+                    </div>
+                </div>
+            </div>
+            <div id="copyright">Copyright &copy; touchsprite.com</div>
+        </div>
+        <div id="right_wrapper">
+            <div id="right">
+                <div class="nav-header"><a class="rootpath">TouchSprite</a>/</div>
+                <div class="new-bulid-btn-group clearfix">
+                    <a href="#" class="add-new-fail">新建文件夹</a><a href="#" class="add-new-script">新建脚本</a>
+                </div>
+                <!--<div class="content_title">您设备上的文件列表</div>-->
+                <div class="table_header">
+                    <div class="filename column">文件名</div>
+                    <div class="size column separator">大小</div>
+                    <div class="operate column separator">操作</div>
+                </div>
+                <div class="files">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="compilebox">
+        <div class="compile-head clearfix">
+            <div class="copmile-save">
+                <span class="copmile-save-text">可使用快捷键[ctrl+s]保存，亦可点击按钮保存</span><span class="copmile-save-btn">保存</span>
+            </div>
+            <div class="copmile-close">
+
+            </div>
+        </div>
+        <div class="copoil-code">
+
+        </div>
+    </div>
+    <div class="showfiles">
+        <i class="velinbox"></i>
+        <img src="" alt="查看文件">
+    </div>
+    <div class="newfliebox">
+        <div class="newfliename">
+            <input type="text" class="newflienameipu" placeholder="请输入文件名">
+        </div>
+        <div class="newfliebtn">
+            <a class="newfliecancle">取消</a><a class="newflienetxt">确认</a>
+        </div>
+
+    </div>
+    <div class="querenbtn">
+        <div class="querentext">是否保存文件</div>
+        <div class="querenbtngrou">
+            <a class="querenbtn-no">取消</a><a class="querenbtn-ok">保存</a>
+        </div>
+    </div>
+    <div class="newfilesbox">
+        <div class="newfilesinput">
+            <input class="newfilesinputname" placeholder="请输入新建文件夹的名字">
+        </div>
+        <div class="chuanjianbtn">
+            <a class="newFilesok">创建</a><a class="newFilesno">取消</a>
+
+        </div>
+    </div>
+    <div class="msgbox">
+        
+    </div>
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+                <div class="object"></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

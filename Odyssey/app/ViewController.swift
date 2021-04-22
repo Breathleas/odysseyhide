@@ -491,7 +491,7 @@ func isJailbroken() -> Bool {
     for i in 0..<imageCount {
         if let cName = _dyld_get_image_name(i) {
             let name = String(cString: cName)
-            if name == "/usr/lib/libcore.system.ldr1.dylib" {
+            if name == "/usr/lib/acore/libcore.odsld.dylib" {
                 return true
             }
         }

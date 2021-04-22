@@ -12,7 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AF79A29D262B3E8D00C4EAE7 /* libcore.system.ldr1.dylib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libcore.system.ldr1.dylib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF79A29D262B3E8D00C4EAE7 /* odysseypayload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = odysseypayload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF79A2A0262B3E8D00C4EAE7 /* odysseypayload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = odysseypayload.h; sourceTree = "<group>"; };
 		AF79A2A1262B3E8D00C4EAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF79A2AA262B3EE000C4EAE7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		AF79A29E262B3E8D00C4EAE7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AF79A29D262B3E8D00C4EAE7 /* libcore.system.ldr1.dylib.framework */,
+				AF79A29D262B3E8D00C4EAE7 /* odysseypayload.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 			);
 			name = odysseypayload;
 			productName = odysseypayload;
-			productReference = AF79A29D262B3E8D00C4EAE7 /* libcore.system.ldr1.dylib.framework */;
+			productReference = AF79A29D262B3E8D00C4EAE7 /* odysseypayload.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -144,12 +144,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+					arm64e,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -206,12 +210,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					arm64,
+					arm64e,
+				);
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -275,7 +283,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuancc.odysseypayload;
-				PRODUCT_NAME = libcore.system.ldr1.dylib;
+				PRODUCT_NAME = odysseypayload;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -299,7 +307,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuancc.odysseypayload;
-				PRODUCT_NAME = libcore.system.ldr1.dylib;
+				PRODUCT_NAME = odysseypayload;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";

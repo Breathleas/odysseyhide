@@ -1,0 +1,239 @@
+html { margin: 0px; padding: 0px; overflow: visible; }
+a{ cursor: pointer;}
+body { background-color: #eee; padding: 0px;margin: 0px; font-size: 14px; font-family:tahoma,  "Microsoft YaHei", Arial, "MS Trebuchet", sans-serif;}
+#wrapper { height: 768px; }
+#content { margin: 0px auto 0px auto; width:960px;position: relative; }
+/*s-build*/
+.clearfix{ clear:both; overflow: hidden;*zoom:1}
+#header{ height: 46px; background: #585858; border-bottom: 2px solid #454545;}
+#left { margin: 29px 0px 0px 13px;}
+.hoeaderlog{ width: 66px;height: 56px; background: url(../images/ts_wifi_images.png) no-repeat; background-position: 0 0; margin-left: 13px;}
+.hoeaderlog a{ display: block; height: 100%;}
+.new-bulid-btn-group a{ width: 88px; height: 32px; border: 0; background: #00a8e9; border-bottom: 2px solid #0087bb; color: #fff; display: inline-block; line-height: 32px; text-align: center; text-decoration: none; margin-right: 14px; margin-bottom: 18px;}
+.files{ min-height: 572px;}
+.titlemes{ display:none; border-radius: 2px; height: 22px; background: #444; line-height: 22px; width: 38px; font-size:11px; color: #dfdfdf; text-align: center; text-indent: 0; position: absolute;bottom: -32px; margin:auto; left:-8px; z-index:9999;}
+.titlemes:before{ content: ""; display: block;border-right: 3px solid rgba(0,0,0,0);border-left: 3px solid rgba(0,0,0,0);border-bottom: 3px solid #444; height: 0; width: 0; margin: auto; left: 0; right: 0; top: -3px; position: absolute;}
+.operationbtn:hover .titlemes{ display: block;}
+.operationbtn{ width: 16px;height: 16px !important; background-image: url(../images/ts_wifi_images.png); background-repeat: no-repeat; float:right; margin: 18px 11px 0;cursor: pointer;  position: relative;}
+#right .files .revisebtn{background-position:-135px 0;margin-left: 15px;}
+#right .files .trash { background-position:-118px 0 ; margin-right: 40px;}
+#right .files .enlarge {background-position:-84px 0 ;}
+#right .files .edit { background-position:-102px 0;}
+
+#right .files .download { margin-left: 15px;background-position:-67px 0 ;}
+#right .files .trash:hover { background-position:-118px -18px ;}
+#right .files .enlarge:hover {background-position:-84px -18px ;}
+#right .files .edit:hover { background-position:-102px -18px;}
+#right .files .revisebtn:hover{background-position:-135px -18px ;}
+#right .files .download:hover { margin-left: 15px;background-position:-67px -18px;}
+#right .files .trash_white {cursor: pointer; }
+#compilebox{ position: fixed; margin: auto; top: 0;left: 0;min-width: 400px; min-height: 480px; background: #1e1e1e; padding:5px; z-index: 999;  width: 100%; height: 100%; box-sizing: border-box; display: none;}
+.compile-head{ height: 32px; background: #2a2a2a;}
+.copmile-close{ width:32px; height: 32px; float: right; background: url(../images/ic_close.png) no-repeat center center; cursor: pointer;}
+.copmile-close:hover{background: url(../images/ic_close.png) no-repeat center center,#ab1030;}
+.copmile-close:active{background: url(../images/ic_close.png) no-repeat center center,#930a26;}
+.copmile-close:focus{background: url(../images/ic_close.png) no-repeat center center,#930a26;}
+.copmile-save{ padding-left: 10px; font-size: 14px; color: #757575; float: left;}
+.copmile-save span{ display: inline-block; vertical-align: middle;}
+.copmile-save-btn{ width: 50px; height: 24px; line-height: 24px; box-sizing: content-box; text-align: center; margin-left: 5px; border: 1px solid #505050; cursor: pointer;}
+.copmile-save-btn:hover{ background: #343434;}
+.copmile-save-btn:active{ background: #262626; border: 1px solid #505050;}
+.copmile-save-btn:focus{ background: #262626; border: 1px solid #505050;}
+.copmile-save-text{ line-height: 32px;}
+
+
+
+#logo { position: relative; height:417; }
+#logo .bocaige{ margin: 23px 9px;}
+.nav-header{ color: #c6c6c6;font-size: 14px; line-height: 1.2em; margin-bottom: 27px;}
+.fenge{ color: #c6c6c6; margin: 0 5px;}
+#logo .wifi { position: absolute; font-size:18px; line-height:18px; color:#fff; text-align:center; top:380px; width:240px; }
+.hint { font-size: 12px; color: #FFF; width:243px; height:24px; text-align: center; line-height:15px; color: #959595; font-size: 16px;}
+#upload_form { position: relative; }
+.file_upload_warper { position: absolute; top:0px; left:0px; width:246px; height:68px; overflow: hidden; }
+.file_upload { cursor: pointer; position: absolute; top:0px; left:-250px; width:500px; height:500px;font-size: 500px; opacity: 0; -moz-opacity: 0; filter:alpha(opacity=0); }
+#copyright { margin-top: 76px; font-size: 14px; color: #9f9f9f; width:243px; text-align: center; }
+#right_wrapper { background-repeat: repeat-y; width:688px;position: absolute;top:77px; left:272px }
+#right { background-repeat: no-repeat;width:100%; margin-bottom: 17px;}
+#right .content_title {width:688px; height:50px; background: #3A3A3A; line-height:50px;text-indent: 10px; font-size:16px; color:#fff;border-bottom: 3px solid #1d1d1d; }
+#right .content_title .drag_hint { padding-left:10px; font-size:12px; color:#FFCC00 }
+#right .table_header {width:688px; height:32px; background: #8a8a8a; border-bottom: 2px solid #585858; }
+#right .table_header .separator { }
+#right .table_header .column { text-indent: 10px; float: left; height:32px; line-height:32px; color:#fff; font-size:14px }
+#right .table_header .filename { width:399px; }
+#right .table_header .size { width:99px; }
+#right .table_header .operate { width:189px; text-align:left; }
+#right .files {width:688px; overflow: auto;}
+#right .file { line-height:52px; height:52px; color:#000; font-size:14px; position: relative; background: #f5f5f5;}
+#right .file:nth-child(2n){ background: #fff;}
+#right .progress_wrapper { color:#3a3a3a; background-image: url('../images/progress_bg.jpg'); background-repeat: repeat-x;}
+#right .progress { position: absolute; top:0px; left:0px; height: 52px; width: 0px;  background-color:#00a8e9;z-index: 1; }
+#right .files .even { background-color: #dadfe4; } 
+#right .files .column { position:relative; text-indent: 10px; float: left; height:52px; overflow: hidden; z-index:2; }
+#right .files .filename { width:399px; }
+#right .files .size { width:99px; }
+#right .files .precent { width:189px; text-align:left;}
+
+
+#drag_area { width:246px; height:246px; margin-left:0px; background-image: url("../images/ts_wifi_drag.png"); background-repeat:no-repeat; }
+#drag_area.normal { background-position: 0px 0px; }
+#drag_area.active { background-position: 0px -248px; }
+
+#upload_button { position: relative; width:246px; height:68px; background-image: url("../images/ts_wifi_btn.png");background-repeat:no-repeat; margin-bottom: 20px; }
+#upload_button.normal   { background-position: 0px 0px; }
+#upload_button.pressed  { background-position: 0px -70px; }
+#upload_button.rollover { background-position: 0px -140px; }
+
+#drag_area .drag_hint { font-size:20px; text-shadow:0px 4px 4px rgba(0,0,0,0.4); color:#fff; text-align: center; padding-top:130px; -moz-user-select: none;-khtml-user-select: none; user-select: none; }
+.button_lables { position: absolute; top:0px; left:0px; width:246px; height:68px; line-height: 68px; }
+.button_lables .button_lable1 {font-size:24px; line-height:64px; color:#fff; text-align:center; -moz-user-select: none;-khtml-user-select: none; user-select: none;}
+.button_lables .button_lable2 {font-size:12px; line-height:16px; color:#fff; text-align:center; -moz-user-select: none;-khtml-user-select: none; user-select: none;}
+.button_lable { position: absolute; width:210px; height:90px; font-size:20px; line-height:80px; color:#fff; text-align:center;}
+
+/*1217*/
+.copoil-code{ width: 100%; height: calc(100% - 39px);height: -webkit-calc(100% - 39px); box-sizing: border-box; border: 1px solid #444; margin-top: 4px;}
+#codmirr{ width: 100%; height: 100%;}
+.showfiles{ width: 500px; height:500px; position: fixed; left: 0;right: 0;top:0;bottom: 0;margin: auto; z-index: 999; overflow: hidden; display: none;}
+.showfiles img{ width: 100%; height:auto;display:inline-block; vertical-align: middle; border: 10px solid rgba(88,88,88,0.5); box-sizing: border-box;}
+.newfliebox{ position: fixed; width:287px; height:164px; background: #fff; z-index: 9999; margin: auto;left: 0;right: 0;top: 0;bottom: 0; padding:20px 18px; box-sizing: border-box; display: none; box-shadow: 0px 3px 10px rgba(0,0,0,0.38);}
+.newflienameipu{ width: 100%; border: none; background: #fff; height: 42px; font-size: 16px; padding: 0 12px; box-sizing: border-box; color: #000; border: 2px solid #dedede; border-radius: 4px;}
+.newflienameipu:focus{border: 2px solid #5da4e6; box-shadow: none;}
+.newfliebtn{padding-top: 40px; overflow: hidden;}
+.newfliebtn a{ display: inline-block; width: 65px; height:42px; text-align: center; background:#fff; line-height: 42px;cursor: pointer;border: 1px solid #dedede; box-sizing: border-box;}
+.newfliebtn a:first-child{ float:right;color: #454545; }
+.newfliebtn a:last-child{ float: right; color: #22ac38; margin-right: 16px;}
+
+
+
+
+.querenbtn{ position: fixed; width:287px; height:137px; background: #fff; z-index: 9999; margin: auto; left: 0;right: 0;top: 0;bottom: 0; display: none; padding:20px 18px; box-sizing: border-box;box-shadow: 0px 3px 10px rgba(0,0,0,0.38);}
+.querentext{ color: #000000; font-size: 15px;}
+.querenbtngrou{ overflow: hidden; padding-top: 36px;}
+.querenbtngrou a{ display: inline-block; width: 65px; height: 42px; line-height: 42px; text-align: center;background: #fff; border: 1px solid #dedede; box-sizing: border-box;}
+.querenbtn-ok{ float:right;color: #22ac38; margin-right: 16px;}
+.querenbtn-no{ float: right;color: #454545;}
+    
+    
+.newfilesbox{ position: fixed; width:287px; height:164px; background: #fff; z-index: 9999; margin: auto;left: 0;right: 0;top: 0;bottom: 0; padding:20px 18px; box-sizing: border-box; display: none; box-shadow: 0px 3px 10px rgba(0,0,0,0.38);}
+.newfilesinputname{ width: 100%; border: none; background: #fff; height: 42px; font-size: 16px; padding: 0 12px; box-sizing: border-box; color: #000; border: 2px solid #dedede; border-radius: 4px;}
+.newfilesinputname:focus{border: 2px solid #5da4e6; box-shadow: none;}
+.chuanjianbtn{padding-top: 40px; overflow: hidden;}
+.chuanjianbtn a{ display: inline-block; width: 65px; height:42px; text-align: center; background:#fff; line-height: 42px;cursor: pointer;border: 1px solid #dedede; box-sizing: border-box;}
+.chuanjianbtn a:first-child{ float:right; color: #22ac38;}
+.chuanjianbtn a:last-child{ float: right; color: #454545; margin-right: 16px;}
+    
+
+
+.rootpath{ color: #10ade9 !important; margin:0 5px;}
+.rootpath:first-of-type{ margin-left: 0;}
+.filerenamebox{ height: 100%;}
+.filerenameboxinput{ height: 34px; width: 236px; border: 2px solid #00a8e9; border-radius: 4px; padding: 0 10px; line-height: 30px; box-sizing: border-box; background: #fff; vertical-align: middle; cursor: text;}
+.filerenameboxbtn{ height: 32px; width: 32px; background-image: url(../images/ts_wifi_images.png); background-repeat: no-repeat; background-position:-90px -764px ; border: none;vertical-align: middle; margin-left: 10px; cursor: pointer;}
+.filerenameboxbtn:hover{background-position:-90px -798px ;}
+.filerenameboxbtn:active{background-position:-90px -832px ;}
+.msgbox{position: fixed; top:70px;  min-width: 100px; background:rgba(0,168,233,0.6); color: #fff; z-index: 99999; display: none; text-align: center; line-height:20px; font-size: 14px; padding: 5px 10px; max-width: 400px; margin: auto;left: 0;right: 0; border-radius:5px;} 
+
+/*加载动画*/
+#loading{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    margin-top: 0px;
+    top: 0px;
+    z-index: 99999;
+}
+#loading-center{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    }
+#loading-center-absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height:27px;
+    width: 73px;
+    margin: auto;
+  
+
+}
+.object{
+    width: 4px;
+    height: 25px;
+    margin-right:3px;
+    background-color: #00a8e9;
+    -webkit-animation: animate 1s infinite;
+    animation: animate 1s infinite;
+    float: left;
+    }
+
+.object:last-child {
+    margin-right: 0px;
+    }
+
+.object:nth-child(10){
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;  
+    }
+.object:nth-child(9){
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;  
+    }   
+.object:nth-child(8){
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;  
+    }
+.object:nth-child(7){
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;  
+    }
+.object:nth-child(6){
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;  
+    }
+.object:nth-child(5){
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+    }
+.object:nth-child(4){
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;      
+    }
+.object:nth-child(3){
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;  
+    }
+.object:nth-child(2){
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+    }                       
+    
+
+
+@-webkit-keyframes animate {
+ 
+  50% {
+    -ms-transform: scaleY(0); 
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    
+      }
+      
+      
+
+}
+
+@keyframes animate {
+  50% {
+    -ms-transform: scaleY(0); 
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+      }
+
+  
+}
+
